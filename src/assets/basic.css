@@ -1,0 +1,12 @@
+/* hier kommt eine reset Css-Datein rein :) oder so*/
+
+:root {
+  --color-blue: #26577c;
+  --color-orange: #e55604;
+  --color-grey: #b4b4b3;
+  --color-beige: #ebe4d1;
+  --font-heading: Limelight;
+  --font-nav: Poppins;
+  --font-size-heading: 96px;
+  --font-size-nav: 32px;
+}

@@ -7,6 +7,8 @@
 </template>
 
 <style>
+@import url("./assets/reset.css");
+@import url("./assets/basic.css");
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -25,6 +27,6 @@ nav a {
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: var(--color-orange);
 }
 </style>
