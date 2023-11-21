@@ -1,6 +1,6 @@
 /* hier kommt eine reset Css-Datein rein :) oder so*/
 
-html {
+:root {
   --color-blue: #26577c;
   --color-orange: #e55604;
   --color-grey: #b4b4b3;
