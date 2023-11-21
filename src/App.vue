@@ -1,14 +1,18 @@
 <template>
-  <nav>
-    <router-link to="/">Recipes</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view />
+  <HeaderLayout />
 </template>
-
+<script>
+import HeaderLayout from "@/layouts/HeaderLayout.vue";
+export default {
+  components: {
+    HeaderLayout,
+  },
+};
+</script>
 <style>
 @import url("./assets/reset.css");
 @import url("./assets/basic.css");
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
