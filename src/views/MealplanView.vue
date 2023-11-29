@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div><h1>Plane deine Woche</h1></div>
 </template>
 
 <script>
