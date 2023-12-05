@@ -1,5 +1,8 @@
 <template>
-  <nav>
+  <nav class="flex-nav">
+    <div>
+      <img class="logo" src="../assets/logobird.svg" alt="logo" />
+    </div>
     <div :data-visible="isMenuOpen">
       <ul
         id="primary-navigation"
@@ -24,9 +27,7 @@
     @click="isMenuOpen = !isMenuOpen"
     class="mobile-nav-toggle"
     aria-controls="primary-navigation"
-  >
-    Menu
-  </button>
+  ></button>
 
   <router-view />
 </template>
@@ -34,7 +35,7 @@
 nav {
   background-color: var(--color-beige);
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
   gap: 2rem;
 }
 .header-link {
@@ -47,9 +48,6 @@ nav {
 }
 
 /*primary header */
-.logo {
-  margin: 2rem;
-}
 
 .primary-header {
   align-items: center;
@@ -62,7 +60,7 @@ nav {
 
 .primary-navigation {
   list-style: none;
-  padding: 0;
+  padding: 1rem;
   margin: 0;
   /*background: steelblue;*/
   background: var(--color-beige);
@@ -112,7 +110,7 @@ nav {
   }
 
   .mobile-nav-toggle[aria-expanded="true"] {
-    background: url(../assets/close.svg); /* hier die Url für das Schließen.svg einsetzen und background-image draus machen*/
+    background: transparent; /* hier die Url für das Schließen.svg einsetzen und background-image draus machen*/
   }
 }
 </style>
