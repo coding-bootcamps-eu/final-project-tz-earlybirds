@@ -3,11 +3,11 @@
     <div>
       <img class="logo" src="../assets/logobird.svg" alt="logo" />
     </div>
-    <div :data-visible="isMenuOpen">
+    <div>
       <ul
         id="primary-navigation"
-        data-visible="false"
-        class="primary-navigation flex"
+        class="flex primary-navigation"
+        :data-visible="isMenuOpen"
       >
         <li><router-link class="header-link" to="/">Home</router-link></li>
         <li>
@@ -83,9 +83,10 @@ nav {
     --gap: 3em;
     position: fixed;
     z-index: 1000;
-    inset: 0 0 0 30%;
+    inset: 0 0 0 45%;
     flex-direction: column;
     padding: min(30vh, 10rem) 2rem;
+    background: transparent;
 
     transform: translateX(100%);
     transition: transform 350ms ease-out;
