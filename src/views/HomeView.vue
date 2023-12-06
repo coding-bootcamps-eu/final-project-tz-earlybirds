@@ -77,4 +77,10 @@ a {
   color: var(--color-beige);
   padding-inline: 0.5rem;
 }
+
+@media (max-width: 35em) {
+  .button-container {
+    display: none;
+  }
+}
 </style>

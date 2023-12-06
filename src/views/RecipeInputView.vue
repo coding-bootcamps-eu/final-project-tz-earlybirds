@@ -15,7 +15,7 @@
         name="kraftpaket"
         placeholder="Kohelnhydrate wie Kartoffeln, Pasta, Reis..."
       />
-      <button>Info</button>
+      <button class="info-button">Info</button>
       <label for="denkfutter">Denkfutter</label>
       <input
         type="text"
@@ -31,7 +31,7 @@
         name="buntes"
         placeholder="Obst und Gemüse"
       />
-      <button>Info</button>
+      <button class="info-button">Info</button>
       <label for="infos">Zusatzinfos</label>
       <input
         type="text"
@@ -39,7 +39,7 @@
         name="infos"
         placeholder="Platz für Notizen"
       />
-      <button>Info</button>
+      <button class="info-button">Info</button>
     </form>
   </div>
   <ul>
