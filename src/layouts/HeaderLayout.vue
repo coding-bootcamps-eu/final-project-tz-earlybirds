@@ -85,7 +85,7 @@ nav {
     z-index: 1000;
     inset: 0 0 0 45%;
     flex-direction: column;
-    padding: min(30vh, 10rem) 2rem;
+    padding: min(30vh, 10rem) 1rem;
     background: transparent;
 
     transform: translateX(100%);
@@ -103,7 +103,7 @@ nav {
     background: url(../assets/hamburger.svg)
       /*url(mit Link zu Hamburger Icon aus der assets datei.svg); und background-image draus machen. dann noch background-color: transparent;*/;
     background-repeat: no-repeat;
-    width: 2rem;
+    width: 2.5rem;
     border: 0;
     aspect-ratio: 1;
     top: 2rem;
@@ -111,7 +111,7 @@ nav {
   }
 
   .mobile-nav-toggle[aria-expanded="true"] {
-    background: transparent; /* hier die Url für das Schließen.svg einsetzen und background-image draus machen*/
+    background-image: url(../assets/close.svg); /* hier die Url für das Schließen.svg einsetzen und background-image draus machen*/
   }
 }
 </style>
