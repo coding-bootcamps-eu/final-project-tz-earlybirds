@@ -8,38 +8,40 @@
         Jedes gute Gericht besteht aus verschiedenen Bausteinen, die zusammen
         eine tolle Familienmahlzeit bilden, dazu brauchst du:
       </p>
-      <label for="kraftpaket">Kraftpaket</label>
-      <input
-        type="text"
-        id="kraftpaket"
-        name="kraftpaket"
-        placeholder="Kohelnhydrate wie Kartoffeln, Pasta, Reis..."
-      />
-      <button class="info-button">Info</button>
-      <label for="denkfutter">Denkfutter</label>
-      <input
-        type="text"
-        id="denkfutter"
-        name="denkfutter"
-        placeholder="Proteinreiches wie Ei, Fleisch, Fisch, Linsen"
-      />
-      <button>Info</button>
-      <label for="buntes">Buntes Allerlei</label>
-      <input
-        type="text"
-        id="buntes"
-        name="buntes"
-        placeholder="Obst und Gemüse"
-      />
-      <button class="info-button">Info</button>
-      <label for="infos">Zusatzinfos</label>
-      <input
-        type="text"
-        id="infos"
-        name="infos"
-        placeholder="Platz für Notizen"
-      />
-      <button class="info-button">Info</button>
+      <div class="flex-wrapper">
+        <label for="kraftpaket">Kraftpaket</label>
+        <img src="../assets/info.svg" /><input
+          type="text"
+          id="kraftpaket"
+          name="kraftpaket"
+          placeholder="Kohelnhydrate wie Kartoffeln, Pasta, Reis..."
+        />
+        <label for="denkfutter">Denkfutter</label>
+        <img src="../assets/info.svg" />
+        <input
+          type="text"
+          id="denkfutter"
+          name="denkfutter"
+          placeholder="Proteinreiches wie Ei, Fleisch, Fisch, Linsen"
+        />
+
+        <label for="buntes">Buntes Allerlei</label>
+        <img src="../assets/info.svg" />
+        <input
+          type="text"
+          id="buntes"
+          name="buntes"
+          placeholder="Obst und Gemüse"
+        />
+        <label for="infos">Zusatzinfos</label> <img src="../assets/info.svg" />
+        <input
+          type="text"
+          id="infos"
+          name="infos"
+          placeholder="Platz für Notizen"
+        />
+      </div>
+      <button type="sumbit">Speichern</button>
     </form>
   </div>
   <ul>
@@ -65,7 +67,8 @@ label {
   font-family: "poppins" regular;
 }
 input {
-  margin-top: 0.5rem;
+  margin-top: 0.2rem;
+  height: 2.5rem;
   width: 100%;
   background-color: var(--color-beige);
   border-radius: 12px;
@@ -76,6 +79,21 @@ input::placeholder {
 }
 #infos {
   padding-bottom: 3rem;
+}
+
+.flex-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1em;
+}
+
+button {
+  font-size: 24px;
+  width: 8em;
+  line-height: 56px;
+  border-radius: 25px;
+  background-color: var(--color-orange);
 }
 </style>
 <script>
