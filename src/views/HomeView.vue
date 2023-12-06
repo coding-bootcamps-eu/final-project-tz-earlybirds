@@ -2,13 +2,21 @@
   <div class="home">
     <h1>Schluss aus, Pasta <span>!</span></h1>
     <div class="button-container">
-      <button class="button-pasta" id="left-pasta">
-        <router-link to="/recipes" class="button-font">Rezepte</router-link>
-      </button>
+      <router-link
+        class="button-pasta button-font"
+        id="left-pasta"
+        to="/recipes"
+        >Rezepte</router-link
+      >
+
       <button class="button-pasta" id="pasta-middle"></button>
-      <button class="button-pasta" id="right-pasta">
-        <router-link to="/planing" class="button-font">Planung</router-link>
-      </button>
+
+      <router-link
+        to="/planing"
+        id="right-pasta"
+        class="button-font button-pasta"
+        >Planung</router-link
+      >
     </div>
   </div>
 </template>
@@ -20,7 +28,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Limelight&display=swap");
 
 .home {
-  height: 100vh;
+  height: 100%;
   background-color: var(--color-beige);
   padding-inline: 2rem;
 }
@@ -34,6 +42,9 @@ h1 {
 }
 span {
   color: var(--color-orange);
+}
+a {
+  padding-top: 3rem;
 }
 .button-container {
   display: flex;
