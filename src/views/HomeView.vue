@@ -29,7 +29,6 @@
 
 .home {
   height: 100%;
-  background-color: var(--color-beige);
   padding-inline: 2rem;
 }
 h1 {

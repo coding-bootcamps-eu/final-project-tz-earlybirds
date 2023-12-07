@@ -41,7 +41,7 @@
           placeholder="Platz für Notizen"
         />
       </div>
-      <button type="sumbit">Speichern</button>
+      <button class="basic-button" type="sumbit">Speichern</button>
     </form>
   </div>
   <ul>
@@ -88,13 +88,13 @@ input::placeholder {
   gap: 1em;
 }
 
-button {
+/* (button {
   font-size: 24px;
   width: 8em;
   line-height: 56px;
   border-radius: 25px;
   background-color: var(--color-orange);
-}
+}) */
 </style>
 <script>
 // @ is an alias to /src
