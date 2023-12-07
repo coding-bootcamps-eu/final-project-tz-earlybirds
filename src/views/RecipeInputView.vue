@@ -1,8 +1,12 @@
 <template>
   <div class="recipe-input">
-    <form>
+    <form @submit.prevent="addRecipe">
       <label for="recipename">Name des Gerichts:</label>
-      <input type="text" placeholder="Trage hier deinen Rezeptnamen ein" />
+      <input
+        v-model="recipe.title"
+        type="text"
+        placeholder="Trage hier deinen Rezeptnamen ein"
+      />
 
       <p class="further-info">
         Jedes gute Gericht besteht aus verschiedenen Bausteinen, die zusammen
@@ -10,15 +14,18 @@
       </p>
       <div class="flex-wrapper">
         <label for="kraftpaket">Kraftpaket</label>
-        <img src="../assets/info.svg" /><input
+        <img src="../assets/info.svg" />
+        <input
+          v-model="recipe.kraftpaket"
           type="text"
           id="kraftpaket"
           name="kraftpaket"
-          placeholder="Kohelnhydrate wie Kartoffeln, Pasta, Reis..."
+          placeholder="Kohlenhydrate wie Kartoffeln, Pasta, Reis..."
         />
         <label for="denkfutter">Denkfutter</label>
         <img src="../assets/info.svg" />
         <input
+          v-model="recipe.denkfutter"
           type="text"
           id="denkfutter"
           name="denkfutter"
@@ -28,6 +35,7 @@
         <label for="buntes">Buntes Allerlei</label>
         <img src="../assets/info.svg" />
         <input
+          v-model="recipe.buntes"
           type="text"
           id="buntes"
           name="buntes"
@@ -35,13 +43,49 @@
         />
         <label for="infos">Zusatzinfos</label> <img src="../assets/info.svg" />
         <input
+          v-model="recipe.zusatzinfos"
           type="text"
           id="infos"
           name="infos"
           placeholder="Platz für Notizen"
         />
       </div>
-      <button class="basic-button" type="sumbit">Speichern</button>
+      <div>
+        <label>
+          <input
+            v-model="recipe.tags"
+            type="checkbox"
+            name="tags"
+            value="warm"
+          />warm
+        </label>
+        <label>
+          <input
+            v-model="recipe.tags"
+            type="checkbox"
+            name="tags"
+            value="kalt"
+          />kalt
+        </label>
+        <label>
+          <input
+            v-model="recipe.tags"
+            type="checkbox"
+            name="tags"
+            value="süß"
+          />süß
+        </label>
+        <label>
+          <input
+            v-model="recipe.tags"
+            type="checkbox"
+            name="tags"
+            value="herzhaft"
+          />herzhaft
+        </label>
+      </div>
+      <button class="basic-button" type="submit">Speichern</button>
+      <button class="basic-button" type="reset">Reset</button>
     </form>
   </div>
   <ul>
@@ -87,15 +131,46 @@ input::placeholder {
   justify-content: space-between;
   gap: 1em;
 }
-
-/* (button {
-  font-size: 24px;
-  width: 8em;
-  line-height: 56px;
-  border-radius: 25px;
-  background-color: var(--color-orange);
-}) */
+img {
+  cursor: pointer;
+}
 </style>
 <script>
-// @ is an alias to /src
+const emptyRecipe = {
+  title: "",
+  kraftpaket: "",
+  denkfutter: "",
+  buntes: "",
+  zusatzinfos: "",
+  tags: [],
+};
+// 1.Schritt: Eingabefelder als data properties hinterlegen
+// 2.Schritt: bei submit über v-model eingabe überschreiben
+// 2,a : ggf. Prüfung einführen (z.B.: required)
+// 3.Schritt: State der API mit Eingabe befüllen
+//4. Schritt: data property wieder leeren
+export default {
+  name: "RecipeInputView",
+  data() {
+    return {
+      recipes: [],
+      recipe: {
+        ...emptyRecipe, //checkboxes mit versch. values; das was angeklickt wird, kommt ins array. Checkbox braucht attribut name mit Titel tag, alle mit gleichem name attribut kommen in ein array.
+      },
+    };
+  },
+  methods: {
+    async addRecipe() {
+      await fetch("http://localhost:3017/recipes", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(this.recipe),
+      });
+      this.recipe = { ...emptyRecipe }; //spread-operator, spaltet auf und befüllt mit gleichen attributen und werten
+      console.log(this.recipe);
+    },
+  },
+};
 </script>
