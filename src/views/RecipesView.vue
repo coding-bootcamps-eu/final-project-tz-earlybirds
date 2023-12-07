@@ -1,12 +1,21 @@
 <template>
-  <div class="home"></div>
+  <div class="home">
+    <ul>
+      <li v-for="recipe in recipes" :key="recipe.id">{{ recipe.title }}</li>
+    </ul>
 
-  <ul>
-    <li v-for="recipe in recipes" :key="recipe.id">{{ recipe.title }}</li>
-  </ul>
-
-  <button><router-link to="/recipe-input">neues Rezept</router-link></button>
+    <router-link class="basic-button" to="/recipe-input"
+      >neues Rezept</router-link
+    >
+  </div>
 </template>
+
+<style scoped>
+.home {
+  display: flex;
+  flex-direction: column;
+}
+</style>
 
 <script>
 // @ is an alias to /src

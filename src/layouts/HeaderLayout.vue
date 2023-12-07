@@ -33,7 +33,6 @@
 </template>
 <style scoped>
 nav {
-  background-color: var(--color-beige);
   display: flex;
   justify-content: space-between;
   gap: 2rem;
@@ -41,6 +40,10 @@ nav {
 .header-link {
   font-weight: 400;
   color: var(--color-blue);
+}
+
+.header-link:hover {
+  color: var(--color-orange);
 }
 .flex {
   display: flex;
@@ -62,10 +65,7 @@ nav {
   list-style: none;
   padding: 1rem;
   margin: 0;
-  /*background: steelblue;*/
-  background: var(--color-beige);
 }
-/* Filter der den Hintergrund durchscheinend sein lässt // wird nicht durch alle Browser unterstützt, daher @support fallback*/
 
 @supports (backdrop-filter: blur(1rem)) {
   .primary-navigation {
@@ -100,8 +100,8 @@ nav {
     display: block;
     position: absolute;
     z-index: 9999;
-    background: url(../assets/hamburger.svg)
-      /*url(mit Link zu Hamburger Icon aus der assets datei.svg); und background-image draus machen. dann noch background-color: transparent;*/;
+    background: url(../assets/hamburger.svg);
+
     background-repeat: no-repeat;
     width: 2.5rem;
     border: 0;
@@ -111,7 +111,7 @@ nav {
   }
 
   .mobile-nav-toggle[aria-expanded="true"] {
-    background-image: url(../assets/close.svg); /* hier die Url für das Schließen.svg einsetzen und background-image draus machen*/
+    background-image: url(../assets/close.svg);
   }
 }
 </style>

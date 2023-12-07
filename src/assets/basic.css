@@ -10,3 +10,17 @@
   --font-size-heading: 96px;
   --font-size-nav: 32px;
 }
+
+* {
+  background-color: var(--color-beige);
+}
+
+.basic-button {
+  font-size: 24px;
+  padding: 1rem;
+  border-radius: 25px;
+  background-color: var(--color-orange);
+  cursor: pointer;
+  border: none;
+  color: var(--color-beige);
+}
