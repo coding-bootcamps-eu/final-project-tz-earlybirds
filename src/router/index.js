@@ -3,6 +3,7 @@ import RecipesView from "../views/RecipesView.vue";
 import HomeView from "../views/HomeView.vue";
 import MealplanView from "../views/MealplanView.vue";
 import RecipeInputView from "../views/RecipeInputView";
+import RecipeItemView from "../views/RecipeItemView.vue";
 
 const routes = [
   {
@@ -34,6 +35,12 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+  },
+  {
+    path: "/:id",
+    name: "recipeItem",
+    component: RecipeItemView,
+    props: true,
   },
 ];
 
