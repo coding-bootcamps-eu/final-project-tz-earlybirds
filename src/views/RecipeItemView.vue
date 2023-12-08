@@ -1,10 +1,14 @@
 <template>
   <div>
-    <h1>Titel {{ $route.params.id }}</h1>
+    <h1>{{ this.recipe.title }}</h1>
     <h2>Kraftpaket</h2>
+    {{ this.recipe.kraftpaket }}
     <h2>Denkfutter</h2>
+    {{ this.recipe.denkfutter }}
     <h2>Buntes Allerlei</h2>
+    {{ this.recipe.buntes }}
     <h3>Zusatzinfos</h3>
+    {{ this.recipe.zusatzinfos }}
     <div>Hier stehen die Tags</div>
   </div>
 </template>
@@ -16,13 +20,13 @@ export default {
   components: {},
   data() {
     return {
-      recipes: [],
+      recipe: {},
     };
   },
   async created() {
     const response = await fetch(urlBase + this.$route.params.id);
-    const data = await response.json();
-    this.recipes = data;
+    this.recipe = await response.json();
+    console.log(this.recipe);
   },
 };
 </script>

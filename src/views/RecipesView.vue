@@ -1,10 +1,19 @@
 <template>
   <div class="home">
     <ul>
-      <li v-for="recipe in recipes" :key="recipe.id" :id="recipe.id">
+      <li
+        v-for="recipe in recipes"
+        :key="recipe.id"
+        :id="recipe.id"
+        :title="recipe.title"
+      >
         {{ recipe.title }}
-        {{ recipe.id }}
-        <router-link :to="{ name: 'recipeItem', params: { id: recipe.id } }"
+
+        <router-link
+          :to="{
+            name: 'recipeItem',
+            params: { id: recipe.id },
+          }"
           >Details</router-link
         >
       </li>
