@@ -1,7 +1,13 @@
 <template>
   <div class="home">
     <ul>
-      <li v-for="recipe in recipes" :key="recipe.id">{{ recipe.title }}</li>
+      <li v-for="recipe in recipes" :key="recipe.id" :id="recipe.id">
+        {{ recipe.title }}
+        {{ recipe.id }}
+        <router-link :to="{ name: 'recipeItem', params: { id: recipe.id } }"
+          >Details</router-link
+        >
+      </li>
     </ul>
 
     <router-link class="basic-button" to="/recipe-input"
@@ -27,6 +33,10 @@ export default {
     return {
       recipes: [],
     };
+  },
+  props: {
+    title: String,
+    id: Number,
   },
   created() {
     this.fetchRecipes();
