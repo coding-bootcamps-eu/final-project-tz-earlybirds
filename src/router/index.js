@@ -37,7 +37,7 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
   },
   {
-    path: "/:id",
+    path: "/recipes/:id",
     name: "recipeItem",
     component: RecipeItemView,
     props: true,
