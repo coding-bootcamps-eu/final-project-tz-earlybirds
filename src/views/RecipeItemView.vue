@@ -1,23 +1,28 @@
 <template>
   <div>
-    <h1>{{ this.recipe.title }}</h1>
+    <h1>{{ recipe.title }}</h1>
     <h2>Kraftpaket</h2>
-    {{ this.recipe.kraftpaket }}
+    {{ recipe.kraftpaket }}
     <h2>Denkfutter</h2>
-    {{ this.recipe.denkfutter }}
+    {{ recipe.denkfutter }}
     <h2>Buntes Allerlei</h2>
-    {{ this.recipe.buntes }}
+    {{ recipe.buntes }}
     <h3>Zusatzinfos</h3>
-    {{ this.recipe.zusatzinfos }}
-    <div>Hier stehen die Tags</div>
+    {{ recipe.zusatzinfos }}
+    <div>
+      <FilterTags :tags="recipe.tags"></FilterTags>
+    </div>
   </div>
 </template>
 
 <script>
+import FilterTags from "@/components/FilterTags.vue";
 const urlBase = "http://localhost:3017/recipes/";
 export default {
   name: "RecipeItemView",
-  components: {},
+  components: {
+    FilterTags,
+  },
   data() {
     return {
       recipe: {},

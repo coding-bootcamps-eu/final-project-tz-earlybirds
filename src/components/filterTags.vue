@@ -1,17 +1,17 @@
 <template>
   <div>
     <label>
-      <input v-model="tags" type="checkbox" name="tags" value="warm" />warm
+      <input v-model="tagsValue" type="checkbox" name="tags" value="warm" />warm
     </label>
     <label>
-      <input v-model="tags" type="checkbox" name="tags" value="kalt" />kalt
+      <input v-model="tagsValue" type="checkbox" name="tags" value="kalt" />kalt
     </label>
     <label>
-      <input v-model="tags" type="checkbox" name="tags" value="süß" />süß
+      <input v-model="tagsValue" type="checkbox" name="tags" value="süß" />süß
     </label>
     <label>
       <input
-        v-model="tags"
+        v-model="tagsValue"
         type="checkbox"
         name="tags"
         value="herzhaft"
@@ -19,7 +19,7 @@
     </label>
     <label>
       <input
-        v-model="tags"
+        v-model="tagsValue"
         type="checkbox"
         name="tags"
         value="vegetarisch"
@@ -27,31 +27,80 @@
     </label>
     <label>
       <input
-        v-model="tags"
+        v-model="tagsValue"
+        type="checkbox"
+        name="tags"
+        value="vegan"
+      />vegan
+    </label>
+    <label>
+      <input
+        v-model="tagsValue"
         type="checkbox"
         name="tags"
         value="mit Fleisch"
       />mit Fleisch
     </label>
     <label>
-      <input v-model="tags" type="checkbox" name="tags" value="mit Fisch" />mit
-      Fisch
-    </label>
-    <label>
-      <input v-model="tags" type="checkbox" name="tags" value="vegan" />vegan
+      <input
+        v-model="tagsValue"
+        type="checkbox"
+        name="tags"
+        value="mit Fisch"
+      />mit Fisch
     </label>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+label {
+  font-size: 1.2rem;
+  background-color: var(--color-beige);
+  color: var(--color-orange);
+  border: 2px solid currentColor;
+  border-radius: 3rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+label:hover,
+label:has(input:checked) {
+  background-color: var(--color-orange);
+  color: var(--color-beige);
+  border-color: transparent;
+}
+input {
+  display: none;
+}
+</style>
 
 <script>
 export default {
-  name: "RecipeInputView",
+  name: "FilterTags",
+  props: ["tags"],
+  emits: ["update:tags"],
   data() {
-    return {
-      tags: [],
-    };
+    return { tagsValue: [] };
+  },
+  watch: {
+    tagsValue: {
+      handler(newValue) {
+        this.$emit("update:tags", newValue);
+      },
+      immediate: true,
+      deep: true,
+    },
+  },
+  created() {
+    setTimeout(() => {
+      this.tagsValue = this.tags;
+    }, 100);
   },
 };
 </script>
