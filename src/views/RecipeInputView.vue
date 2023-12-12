@@ -51,38 +51,7 @@
         />
       </div>
       <div>
-        <label>
-          <input
-            v-model="recipe.tags"
-            type="checkbox"
-            name="tags"
-            value="warm"
-          />warm
-        </label>
-        <label>
-          <input
-            v-model="recipe.tags"
-            type="checkbox"
-            name="tags"
-            value="kalt"
-          />kalt
-        </label>
-        <label>
-          <input
-            v-model="recipe.tags"
-            type="checkbox"
-            name="tags"
-            value="süß"
-          />süß
-        </label>
-        <label>
-          <input
-            v-model="recipe.tags"
-            type="checkbox"
-            name="tags"
-            value="herzhaft"
-          />herzhaft
-        </label>
+        <filterTags />
       </div>
       <button class="basic-button" type="submit">Speichern</button>
       <button class="basic-button" type="reset">Reset</button>
@@ -136,13 +105,14 @@ img {
 }
 </style>
 <script>
+import filterTags from "@/components/filterTags.vue";
+
 const emptyRecipe = {
   title: "",
   kraftpaket: "",
   denkfutter: "",
   buntes: "",
   zusatzinfos: "",
-  tags: [],
 };
 // 1.Schritt: Eingabefelder als data properties hinterlegen
 // 2.Schritt: bei submit über v-model eingabe überschreiben
@@ -158,6 +128,9 @@ export default {
         ...emptyRecipe, //checkboxes mit versch. values; das was angeklickt wird, kommt ins array. Checkbox braucht attribut name mit Titel tag, alle mit gleichem name attribut kommen in ein array.
       },
     };
+  },
+  components: {
+    filterTags,
   },
   methods: {
     async addRecipe() {
