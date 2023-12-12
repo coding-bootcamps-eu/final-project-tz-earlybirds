@@ -49,10 +49,12 @@
           name="infos"
           placeholder="Platz für Notizen"
         />
+        <FilterTags
+          :tags="recipe.tags"
+          @update:tags="(newValue) => (recipe.tags = newValue)"
+        ></FilterTags>
       </div>
-      <div>
-        <filterTags />
-      </div>
+
       <button class="basic-button" type="submit">Speichern</button>
       <button class="basic-button" type="reset">Reset</button>
     </form>
@@ -105,7 +107,7 @@ img {
 }
 </style>
 <script>
-import filterTags from "@/components/filterTags.vue";
+import FilterTags from "@/components/FilterTags.vue";
 
 const emptyRecipe = {
   title: "",
@@ -113,6 +115,7 @@ const emptyRecipe = {
   denkfutter: "",
   buntes: "",
   zusatzinfos: "",
+  tags: [],
 };
 // 1.Schritt: Eingabefelder als data properties hinterlegen
 // 2.Schritt: bei submit über v-model eingabe überschreiben
@@ -130,7 +133,7 @@ export default {
     };
   },
   components: {
-    filterTags,
+    FilterTags,
   },
   methods: {
     async addRecipe() {
