@@ -20,6 +20,7 @@
   padding: 1rem;
   border-radius: 25px;
   background-color: var(--color-orange);
+  margin: 0 22rem;
   cursor: pointer;
   border: none;
   color: var(--color-beige);
