@@ -30,6 +30,9 @@
   display: flex;
   flex-direction: column;
 }
+li {
+  padding-block: 2rem;
+}
 </style>
 
 <script>
