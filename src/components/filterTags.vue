@@ -57,16 +57,16 @@ div {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
   width: 100%;
 }
 label {
-  font-size: 1.2rem;
+  font-size: 1rem;
   background-color: var(--color-beige);
   color: var(--color-orange);
   border: 2px solid currentColor;
-  border-radius: 3rem;
-  padding: 0.5rem 1rem;
+  border-radius: 2.5rem;
+  padding: 0.25rem 1rem;
   cursor: pointer;
 }
 label:hover,

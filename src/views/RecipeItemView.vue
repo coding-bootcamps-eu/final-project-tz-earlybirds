@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="recipe-item">
     <h1>{{ recipe.title }}</h1>
     <h2>Kraftpaket</h2>
     {{ recipe.kraftpaket }}
@@ -9,9 +9,8 @@
     {{ recipe.buntes }}
     <h3>Zusatzinfos</h3>
     {{ recipe.zusatzinfos }}
-    <div>
-      <FilterTags :tags="recipe.tags"></FilterTags>
-    </div>
+
+    <FilterTags :tags="recipe.tags"></FilterTags>
   </div>
 </template>
 
