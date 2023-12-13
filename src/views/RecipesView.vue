@@ -10,17 +10,18 @@
         {{ recipe.title }}
 
         <router-link
+          id="details"
           :to="{
             name: 'recipeItem',
             params: { id: recipe.id },
           }"
-          >Details</router-link
         >
+          <img src="../assets/menu.svg" alt="" />
+        </router-link>
       </li>
     </ul>
-
-    <router-link class="basic-button" to="/recipe-input"
-      >neues Rezept</router-link
+    <router-link id="new-recipe-button" class="basic-button" to="/recipe-input"
+      >+ neues Rezept</router-link
     >
   </div>
 </template>
@@ -29,9 +30,24 @@
 .home {
   display: flex;
   flex-direction: column;
+  margin-inline: 4rem;
+  color: var(--color-blue);
 }
+
 li {
-  padding-block: 2rem;
+  display: flex;
+  border-bottom: 2px solid var(--color-blue);
+  padding-block: 0.5rem;
+  justify-content: space-between;
+  padding-right: 0.5rem;
+}
+#new-recipe-button {
+  justify-content: flex-start;
+  align-self: flex-start;
+}
+.basic-button {
+  margin-block: 1rem;
+  margin-inline: 0;
 }
 </style>
 
