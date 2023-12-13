@@ -14,7 +14,15 @@
       </p>
       <div class="flex-wrapper">
         <label for="kraftpaket">Kraftpaket</label>
-        <img src="../assets/info.svg" />
+        <button data-open-modal class="info-button" @click="openInfo">
+          <img src="../assets/info.svg" />
+        </button>
+        <dialog data-modal>
+          <div>
+            <p>Hallo</p>
+            <button data-close-modal @click="closeInfo"></button>
+          </div>
+        </dialog>
         <input
           v-model="recipe.kraftpaket"
           type="text"
@@ -23,7 +31,7 @@
           placeholder="Kohlenhydrate wie Kartoffeln, Pasta, Reis..."
         />
         <label for="denkfutter">Denkfutter</label>
-        <img src="../assets/info.svg" />
+        <button class="info-button"><img src="../assets/info.svg" /></button>
         <input
           v-model="recipe.denkfutter"
           type="text"
@@ -33,7 +41,7 @@
         />
 
         <label for="buntes">Buntes Allerlei</label>
-        <img src="../assets/info.svg" />
+        <button class="info-button"><img src="../assets/info.svg" /></button>
         <input
           v-model="recipe.buntes"
           type="text"
@@ -134,6 +142,9 @@ input::placeholder {
 img {
   cursor: pointer;
 }
+.info-button {
+  border: none;
+}
 </style>
 <script>
 const emptyRecipe = {
@@ -170,6 +181,9 @@ export default {
       });
       this.recipe = { ...emptyRecipe }; //spread-operator, spaltet auf und befüllt mit gleichen attributen und werten
       console.log(this.recipe);
+    },
+    openInfo() {
+      return this.dialog.showModal();
     },
   },
 };
