@@ -14,9 +14,6 @@
       </p>
       <div class="flex-wrapper">
         <label for="kraftpaket">Kraftpaket</label>
-        <button class="info-button">
-          <img src="../assets/info.svg" />
-        </button>
 
         <input
           v-model="recipe.kraftpaket"
@@ -26,7 +23,6 @@
           placeholder="Kohlenhydrate wie Kartoffeln, Pasta, Reis..."
         />
         <label for="denkfutter">Denkfutter</label>
-        <button class="info-button"><img src="../assets/info.svg" /></button>
         <input
           v-model="recipe.denkfutter"
           type="text"
@@ -36,7 +32,6 @@
         />
 
         <label for="buntes">Buntes Allerlei</label>
-        <button class="info-button"><img src="../assets/info.svg" /></button>
         <input
           v-model="recipe.buntes"
           type="text"
@@ -44,7 +39,7 @@
           name="buntes"
           placeholder="Obst und Gemüse"
         />
-        <label for="infos">Zusatzinfos</label> <img src="../assets/info.svg" />
+        <label for="infos">Zusatzinfos</label>
         <input
           v-model="recipe.zusatzinfos"
           type="text"
@@ -61,6 +56,31 @@
       <button class="basic-button" type="submit">Speichern</button>
       <button class="basic-button" type="reset">Reset</button>
     </form>
+    <button class="info-button" @click="openInfo">
+      <img src="../assets/info.svg" />
+    </button>
+    <dialog id="data-modal">
+      <div>
+        <strong>Kohlenhydrate</strong> sind echte Kraftpakete! Das machen sie
+        ganz schnell, aber auch lanfristig. Zuckerbausteine aus deinem Essen
+        werden aus dem Mund schon direkt ins Blut übergehen. Damit du auch lange
+        von der Energie zehren kannst, nimm am besten Vollkornprodukte, denn die
+        brauchen etwas Zeit bis sie aufgespalten sind und ins Blut wandern.
+      </div>
+      <div>
+        <strong>Eiweiße</strong> gehören zu unserem Denkfutter! Denn sie bringen
+        ganz automatisch Fette, Mineralstoffe und Vitamine mit, die wir für ein
+        leistungsstarkes Gehirn brauchen. Eine gute Auswahl macht dich außerdem
+        satt und glücklich.
+      </div>
+      <div>
+        <strong>Obst und Gemüse</strong> bilden ein buntes Allerlei! Je mehr
+        verschiedene Farben auf deinem Teller, umso besser. Abwechslungreich
+        darf es sein, aber mach dir keinen Stress. Eine schnelle Portion Rohkost
+        ist immer eine praktische Möglichkeit um hier zu punkten.
+      </div>
+      <button @click="closeInfo">close</button>
+    </dialog>
   </div>
   <ul>
     <li v-for="recipe in recipes" :key="recipe.id">{{ recipe.title }}</li>
@@ -123,6 +143,7 @@ const emptyRecipe = {
   zusatzinfos: "",
   tags: [],
 };
+
 // 1.Schritt: Eingabefelder als data properties hinterlegen
 // 2.Schritt: bei submit über v-model eingabe überschreiben
 // 2,a : ggf. Prüfung einführen (z.B.: required)
@@ -152,6 +173,14 @@ export default {
       });
       this.recipe = { ...emptyRecipe }; //spread-operator, spaltet auf und befüllt mit gleichen attributen und werten
       console.log(this.recipe);
+    },
+    openInfo() {
+      const modal = document.querySelector("#data-modal");
+      return modal.showModal();
+    },
+    closeInfo() {
+      const modal = document.querySelector("#data-modal");
+      return modal.close();
     },
   },
 };
