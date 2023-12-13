@@ -14,7 +14,10 @@
       </p>
       <div class="flex-wrapper">
         <label for="kraftpaket">Kraftpaket</label>
-        <img src="../assets/info.svg" />
+        <button class="info-button">
+          <img src="../assets/info.svg" />
+        </button>
+
         <input
           v-model="recipe.kraftpaket"
           type="text"
@@ -23,7 +26,7 @@
           placeholder="Kohlenhydrate wie Kartoffeln, Pasta, Reis..."
         />
         <label for="denkfutter">Denkfutter</label>
-        <img src="../assets/info.svg" />
+        <button class="info-button"><img src="../assets/info.svg" /></button>
         <input
           v-model="recipe.denkfutter"
           type="text"
@@ -33,7 +36,7 @@
         />
 
         <label for="buntes">Buntes Allerlei</label>
-        <img src="../assets/info.svg" />
+        <button class="info-button"><img src="../assets/info.svg" /></button>
         <input
           v-model="recipe.buntes"
           type="text"
@@ -104,6 +107,9 @@ input::placeholder {
 }
 img {
   cursor: pointer;
+}
+.info-button {
+  border: none;
 }
 </style>
 <script>
