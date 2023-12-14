@@ -2,12 +2,12 @@
   <div class="recipe-item">
     <h1>{{ recipe.title }}</h1>
     <h2>Kraftpaket</h2>
-    {{ recipe.kraftpaket }}
+    <p>{{ recipe.kraftpaket }}</p>
     <h2>Denkfutter</h2>
     {{ recipe.denkfutter }}
     <h2>Buntes Allerlei</h2>
     {{ recipe.buntes }}
-    <h3>Zusatzinfos</h3>
+    <h2>Zusatzinfos</h2>
     {{ recipe.zusatzinfos }}
 
     <FilterTags :tags="recipe.tags"></FilterTags>

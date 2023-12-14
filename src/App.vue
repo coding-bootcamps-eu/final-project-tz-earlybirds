@@ -1,5 +1,8 @@
 <template>
-  <HeaderLayout />
+  <div class="content-wrapper">
+    <HeaderLayout />
+    <router-view />
+  </div>
 </template>
 <script>
 import HeaderLayout from "@/layouts/HeaderLayout.vue";
@@ -21,6 +24,11 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+.content-wrapper {
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  max-width: 80rem;
 }
 
 nav {
