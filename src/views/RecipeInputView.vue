@@ -144,7 +144,6 @@ const emptyRecipe = {
   tags: [],
 };
 
-
 export default {
   name: "RecipeInputView",
   data() {
@@ -158,8 +157,10 @@ export default {
   components: {
     FilterTags,
   },
+
   methods: {
     async addRecipe() {
+      // prettier ignore
       await fetch("http://localhost:3017/recipes", {
         method: "POST",
         headers: {
