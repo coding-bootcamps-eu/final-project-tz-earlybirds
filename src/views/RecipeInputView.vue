@@ -160,7 +160,7 @@ export default {
 
   methods: {
     async addRecipe() {
-      // prettier ignore
+      //prettier ignore
       await fetch("http://localhost:3017/recipes", {
         method: "POST",
         headers: {
@@ -169,7 +169,6 @@ export default {
         body: JSON.stringify(this.recipe),
       });
       this.recipe = { ...emptyRecipe };
-      console.log(this.recipe);
     },
     openInfo() {
       const modal = document.querySelector("#data-modal");
