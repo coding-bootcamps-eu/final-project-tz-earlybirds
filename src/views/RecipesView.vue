@@ -8,16 +8,24 @@
         :title="recipe.title"
       >
         {{ recipe.title }}
-
-        <router-link
-          id="details"
-          :to="{
-            name: 'recipeItem',
-            params: { id: recipe.id },
-          }"
-        >
-          <img src="../assets/menu.svg" alt="" />
-        </router-link>
+        <div class="icons-container">
+          <router-link
+            id="details"
+            :to="{
+              name: 'recipeItem',
+              params: { id: recipe.id },
+            }"
+          >
+            <img
+              id="details-router"
+              src="../assets/menu.svg"
+              alt="details icon"
+            />
+          </router-link>
+          <button id="delete-button" @click="deleteRecipe(recipe.id)">
+            <img id="trash" src="../assets/trash.svg" alt="trash icon" />
+          </button>
+        </div>
       </li>
     </ul>
     <router-link id="new-recipe-button" class="basic-button" to="/recipe-input"
@@ -39,12 +47,27 @@ li {
   border-bottom: 2px solid var(--color-blue);
   padding-block: 0.5rem;
   justify-content: space-between;
+  align-items: baseline;
   padding-right: 0.5rem;
 }
+.icons-container {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+#delete-button {
+  border: none;
+}
+#delete-button:hover {
+  border: dashed 0.5px var(--color-orange);
+}
+
 #new-recipe-button {
   justify-content: flex-start;
   align-self: flex-start;
 }
+
 .basic-button {
   margin-block: 1rem;
   margin-inline: 0;
@@ -74,6 +97,18 @@ export default {
       const response = await fetch("http://localhost:3017/recipes");
       const data = await response.json();
       this.recipes = data;
+    },
+
+    deleteRecipe(id) {
+      const baseUrl = "http://localhost:3017/recipes/";
+
+      fetch(baseUrl + id, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then(() => {
+          this.fetchRecipes();
+        });
     },
   },
 };
