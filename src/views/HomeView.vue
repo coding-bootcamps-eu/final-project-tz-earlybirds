@@ -29,6 +29,7 @@
 
 .home {
   height: 100%;
+
   padding-inline: 2rem;
 }
 h1 {

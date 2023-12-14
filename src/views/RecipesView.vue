@@ -30,7 +30,7 @@
 .home {
   display: flex;
   flex-direction: column;
-  margin-inline: 4rem;
+  margin-inline: 15%;
   color: var(--color-blue);
 }
 
