@@ -133,7 +133,7 @@ img {
 }
 </style>
 <script>
-import FilterTags from "@/components/FilterTags.vue";
+import FilterTags from "../components/FilterTags.vue";
 
 const emptyRecipe = {
   title: "",
@@ -144,18 +144,14 @@ const emptyRecipe = {
   tags: [],
 };
 
-// 1.Schritt: Eingabefelder als data properties hinterlegen
-// 2.Schritt: bei submit über v-model eingabe überschreiben
-// 2,a : ggf. Prüfung einführen (z.B.: required)
-// 3.Schritt: State der API mit Eingabe befüllen
-//4. Schritt: data property wieder leeren
+
 export default {
   name: "RecipeInputView",
   data() {
     return {
       recipes: [],
       recipe: {
-        ...emptyRecipe, //checkboxes mit versch. values; das was angeklickt wird, kommt ins array. Checkbox braucht attribut name mit Titel tag, alle mit gleichem name attribut kommen in ein array.
+        ...emptyRecipe,
       },
     };
   },
@@ -171,7 +167,7 @@ export default {
         },
         body: JSON.stringify(this.recipe),
       });
-      this.recipe = { ...emptyRecipe }; //spread-operator, spaltet auf und befüllt mit gleichen attributen und werten
+      this.recipe = { ...emptyRecipe };
       console.log(this.recipe);
     },
     openInfo() {
