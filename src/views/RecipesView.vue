@@ -12,7 +12,7 @@
         :title="recipe.title"
       >
         <router-link
-          id="details"
+          id="item-link"
           :to="{
             name: 'recipeItem',
             params: { id: recipe.id },
@@ -52,10 +52,11 @@
 .home {
   display: flex;
   flex-direction: column;
-
   color: var(--color-blue);
 }
-
+#item-link {
+  color: inherit;
+}
 li {
   display: flex;
   border-bottom: 2px solid var(--color-blue);
