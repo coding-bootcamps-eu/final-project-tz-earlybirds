@@ -28,6 +28,7 @@
               params: { id: recipe.id },
             }"
           >
+            <span class="visually-hidden">Link zur Detailseite</span>
             <img
               id="details-router"
               src="../assets/menu.svg"
@@ -35,6 +36,7 @@
             />
           </router-link>
           <button id="delete-button" @click="deleteRecipe(recipe.id)">
+            <span class="visually-hidden">Rezept löschen</span>
             <img id="trash" src="../assets/trash.svg" alt="trash icon" />
           </button>
         </div>
