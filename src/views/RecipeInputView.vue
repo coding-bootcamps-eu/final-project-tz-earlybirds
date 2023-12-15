@@ -39,6 +39,14 @@
           name="denkfutter"
           placeholder="Proteinreiches wie Ei, Fleisch, Fisch, Linsen"
         />
+        <button
+          type="button"
+          class="info-button"
+          @click="$refs.denkfutter.showModal()"
+        >
+          <img src="../assets/info.svg" />
+        </button>
+        <span class="visually-hidden">Was bedeutet Denkfutter?</span>
 
         <label for="buntes">Buntes Allerlei</label>
         <input
@@ -48,6 +56,14 @@
           name="buntes"
           placeholder="Obst und Gemüse"
         />
+        <button
+          type="button"
+          class="info-button"
+          @click="$refs.buntes.showModal()"
+        >
+          <img src="../assets/info.svg" />
+        </button>
+        <span class="visually-hidden">Was bedeutet Buntes Allerlei?</span>
         <label for="infos">Zusatzinfos</label>
         <input
           v-model="recipe.zusatzinfos"
@@ -74,19 +90,26 @@
         von der Energie zehren kannst, nimm am besten Vollkornprodukte, denn die
         brauchen etwas Zeit bis sie aufgespalten sind und ins Blut wandern.
       </div>
+      <button @click="$refs.kraftpaket.close()">close</button>
+    </dialog>
+    <dialog ref="denkfutter">
       <div>
         <strong>Eiweiße</strong> gehören zu unserem Denkfutter! Denn sie bringen
         ganz automatisch Fette, Mineralstoffe und Vitamine mit, die wir für ein
         leistungsstarkes Gehirn brauchen. Eine gute Auswahl macht dich außerdem
         satt und glücklich.
       </div>
+
+      <button @click="$refs.denkfutter.close()">close</button>
+    </dialog>
+    <dialog ref="buntes">
       <div>
         <strong>Obst und Gemüse</strong> bilden ein buntes Allerlei! Je mehr
         verschiedene Farben auf deinem Teller, umso besser. Abwechslungreich
         darf es sein, aber mach dir keinen Stress. Eine schnelle Portion Rohkost
         ist immer eine praktische Möglichkeit um hier zu punkten.
       </div>
-      <button @click="$refs.modal.close()">close</button>
+      <button @click="$refs.buntes.close()">close</button>
     </dialog>
   </div>
 </template>
@@ -173,12 +196,12 @@ export default {
       });
       this.recipe = { ...emptyRecipe };
     },
-    openInfo() {
+    /*openInfo() {
       this.$refs.modal.showModal();
     },
     closeInfo() {
       this.$refs.modal.close();
-    },
+    },*/
     onTagsUpdate(newValue) {
       this.recipe.tags = newValue;
     },
