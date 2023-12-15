@@ -13,66 +13,80 @@
         eine tolle Familienmahlzeit bilden, dazu brauchst du:
       </p>
       <div class="flex-wrapper">
-        <label for="kraftpaket">Kraftpaket</label>
+        <div class="flex-wrapper-2">
+          <div>
+            <label for="kraftpaket">Kraftpaket</label>
 
-        <input
-          v-model="recipe.kraftpaket"
-          type="text"
-          id="kraftpaket"
-          name="kraftpaket"
-          placeholder="Kohlenhydrate wie Kartoffeln, Pasta, Reis..."
-        />
-        <button
-          type="button"
-          class="info-button"
-          @click="$refs.kraftpaket.showModal()"
-        >
-          <span class="visually-hidden">Was bedeutet Kraftpaket?</span>
+            <input
+              v-model="recipe.kraftpaket"
+              type="text"
+              id="kraftpaket"
+              name="kraftpaket"
+              placeholder="Kohlenhydrate wie Kartoffeln, Pasta, Reis..."
+            />
+          </div>
+          <button
+            type="button"
+            class="info-button"
+            @click="$refs.kraftpaket.showModal()"
+          >
+            <span class="visually-hidden">Was bedeutet Kraftpaket?</span>
 
-          <img src="../assets/info.svg" />
-        </button>
-        <label for="denkfutter">Denkfutter</label>
-        <input
-          v-model="recipe.denkfutter"
-          type="text"
-          id="denkfutter"
-          name="denkfutter"
-          placeholder="Proteinreiches wie Ei, Fleisch, Fisch, Linsen"
-        />
-        <button
-          type="button"
-          class="info-button"
-          @click="$refs.denkfutter.showModal()"
-        >
-          <img src="../assets/info.svg" />
-        </button>
-        <span class="visually-hidden">Was bedeutet Denkfutter?</span>
-
-        <label for="buntes">Buntes Allerlei</label>
-        <input
-          v-model="recipe.buntes"
-          type="text"
-          id="buntes"
-          name="buntes"
-          placeholder="Obst und Gemüse"
-        />
-        <button
-          type="button"
-          class="info-button"
-          @click="$refs.buntes.showModal()"
-        >
-          <img src="../assets/info.svg" />
-        </button>
-        <span class="visually-hidden">Was bedeutet Buntes Allerlei?</span>
-        <label for="infos">Zusatzinfos</label>
-        <input
-          v-model="recipe.zusatzinfos"
-          type="text"
-          id="infos"
-          name="infos"
-          placeholder="Platz für Notizen"
-        />
+            <img src="../assets/info.svg" />
+          </button>
+        </div>
+        <div class="flex-wrapper-2">
+          <div>
+            <label for="denkfutter">Denkfutter</label>
+            <input
+              v-model="recipe.denkfutter"
+              type="text"
+              id="denkfutter"
+              name="denkfutter"
+              placeholder="Proteinreiches wie Ei, Fleisch, Fisch, Linsen"
+            />
+          </div>
+          <button
+            type="button"
+            class="info-button"
+            @click="$refs.denkfutter.showModal()"
+          >
+            <span class="visually-hidden">Was bedeutet Denkfutter?</span>
+            <img src="../assets/info.svg" />
+          </button>
+        </div>
+        <div class="flex-wrapper-2">
+          <div>
+            <label for="buntes">Buntes Allerlei</label>
+            <input
+              v-model="recipe.buntes"
+              type="text"
+              id="buntes"
+              name="buntes"
+              placeholder="Obst und Gemüse"
+            />
+          </div>
+          <button
+            type="button"
+            class="info-button"
+            @click="$refs.buntes.showModal()"
+          >
+            <span class="visually-hidden">Was bedeutet Buntes Allerlei?</span>
+            <img src="../assets/info.svg" />
+          </button>
+        </div>
+        <div>
+          <label for="infos">Zusatzinfos</label>
+          <input
+            v-model="recipe.zusatzinfos"
+            type="text"
+            id="infos"
+            name="infos"
+            placeholder="Platz für Notizen"
+          />
+        </div>
         <FilterTags
+          id="filter-tags"
           :tags="recipe.tags"
           @update:tags="onTagsUpdate($event)"
         ></FilterTags>
@@ -148,15 +162,22 @@ input::placeholder {
 
 .flex-wrapper {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 1em;
+}
+.flex-wrapper-2 {
+  display: flex;
+  justify-content: space-between;
 }
 img {
   cursor: pointer;
 }
 .info-button {
   border: none;
+}
+#filter-tags {
+  margin-block: 2rem;
 }
 </style>
 <script>

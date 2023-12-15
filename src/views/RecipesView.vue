@@ -35,7 +35,11 @@
               alt="details icon"
             />
           </router-link>
-          <button id="delete-button" @click="deleteRecipe(recipe.id)">
+          <button
+            type="button"
+            id="delete-button"
+            @click="deleteRecipe(recipe.id)"
+          >
             <span class="visually-hidden">Rezept löschen</span>
             <img id="trash" src="../assets/trash.svg" alt="trash icon" />
           </button>
