@@ -1,18 +1,34 @@
 <template>
+  <h1>{{ recipe.title }}</h1>
   <div class="recipe-item">
-    <h1>{{ recipe.title }}</h1>
     <h2>Kraftpaket</h2>
     <p>{{ recipe.kraftpaket }}</p>
     <h2>Denkfutter</h2>
-    {{ recipe.denkfutter }}
+    <p>{{ recipe.denkfutter }}</p>
     <h2>Buntes Allerlei</h2>
-    {{ recipe.buntes }}
+    <p>{{ recipe.buntes }}</p>
     <h2>Zusatzinfos</h2>
-    {{ recipe.zusatzinfos }}
+    <p>{{ recipe.zusatzinfos }}</p>
 
-    <FilterTags :tags="recipe.tags"></FilterTags>
+    <div class="filter-tags">
+      <FilterTags :tags="recipe.tags"></FilterTags>
+    </div>
   </div>
 </template>
+
+<style scoped>
+.recipe-item {
+  padding-top: 3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 5% 15%;
+}
+</style>
 
 <script>
 import FilterTags from "@/components/FilterTags.vue";

@@ -13,7 +13,7 @@
         eine tolle Familienmahlzeit bilden, dazu brauchst du:
       </p>
       <div class="flex-wrapper">
-        <div class="flex-wrapper-2">
+        <div class="grid-wrapper">
           <div>
             <label for="kraftpaket">Kraftpaket</label>
 
@@ -35,7 +35,7 @@
             <img src="../assets/info.svg" />
           </button>
         </div>
-        <div class="flex-wrapper-2">
+        <div class="grid-wrapper">
           <div>
             <label for="denkfutter">Denkfutter</label>
             <input
@@ -55,7 +55,7 @@
             <img src="../assets/info.svg" />
           </button>
         </div>
-        <div class="flex-wrapper-2">
+        <div class="grid-wrapper">
           <div>
             <label for="buntes">Buntes Allerlei</label>
             <input
@@ -91,9 +91,10 @@
           @update:tags="onTagsUpdate($event)"
         ></FilterTags>
       </div>
-
-      <button class="basic-button" type="submit">Speichern</button>
-      <button class="basic-button" type="reset">Reset</button>
+      <div class="button-wrapper">
+        <button class="basic-button" type="submit">Speichern</button>
+        <button class="basic-button" type="reset">Reset</button>
+      </div>
     </form>
 
     <dialog ref="kraftpaket">
@@ -140,7 +141,7 @@
 form {
   color: var(--color-blue);
   margin: auto;
-  width: 50%;
+  width: 70%;
 }
 label {
   font-family: "poppins" regular;
@@ -166,9 +167,10 @@ input::placeholder {
   flex-wrap: wrap;
   justify-content: space-between;
 }
-.flex-wrapper-2 {
-  display: flex;
-  justify-content: space-between;
+.grid-wrapper {
+  display: grid;
+  grid-template-columns: 15fr 1fr;
+  gap: 2rem;
 }
 img {
   cursor: pointer;
@@ -178,6 +180,16 @@ img {
 }
 #filter-tags {
   margin-block: 2rem;
+}
+dialog {
+  width: 70%;
+}
+button {
+  margin: 0;
+}
+.button-wrapper {
+  display: flex;
+  justify-content: space-between;
 }
 </style>
 <script>
