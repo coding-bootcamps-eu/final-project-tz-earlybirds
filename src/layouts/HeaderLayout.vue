@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex-nav">
+  <nav aria-label="Hauptnavigation" class="flex-nav">
     <div>
       <img class="logo" src="../assets/logobird.svg" alt="logo" />
     </div>
@@ -28,8 +28,6 @@
     class="mobile-nav-toggle"
     aria-controls="primary-navigation"
   ></button>
-
-  <router-view />
 </template>
 <style scoped>
 nav {

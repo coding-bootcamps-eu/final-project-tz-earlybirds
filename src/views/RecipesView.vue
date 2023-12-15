@@ -1,13 +1,25 @@
 <template>
   <div class="home">
+    <FilterTags
+      :tags="selectedTags"
+      @update:tags="onTagsUpdate($event)"
+    ></FilterTags>
     <ul>
       <li
-        v-for="recipe in recipes"
+        v-for="recipe in filteredRecipes"
         :key="recipe.id"
         :id="recipe.id"
         :title="recipe.title"
       >
-        {{ recipe.title }}
+        <router-link
+          id="details"
+          :to="{
+            name: 'recipeItem',
+            params: { id: recipe.id },
+          }"
+        >
+          {{ recipe.title }}
+        </router-link>
         <div class="icons-container">
           <router-link
             id="details"
@@ -38,7 +50,7 @@
 .home {
   display: flex;
   flex-direction: column;
-  margin-inline: 15%;
+
   color: var(--color-blue);
 }
 
@@ -76,18 +88,32 @@ li {
 
 <script>
 // @ is an alias to /src
-
+import FilterTags from "@/components/FilterTags.vue";
 export default {
   name: "RecipeView",
-  components: {},
-  data() {
-    return {
-      recipes: [],
-    };
+  components: {
+    FilterTags,
   },
   props: {
     title: String,
     id: Number,
+  },
+  data() {
+    return {
+      recipes: [],
+      selectedTags: [],
+    };
+  },
+  computed: {
+    filteredRecipes() {
+      return this.recipes.filter((recipe) => {
+        const intersection = recipe.tags.filter((tag) =>
+          this.selectedTags.includes(tag)
+        );
+
+        return intersection.length === this.selectedTags.length;
+      });
+    },
   },
   created() {
     this.fetchRecipes();
@@ -109,6 +135,9 @@ export default {
         .then(() => {
           this.fetchRecipes();
         });
+    },
+    onTagsUpdate(newValue) {
+      this.selectedTags = newValue;
     },
   },
 };

@@ -22,6 +22,15 @@
           name="kraftpaket"
           placeholder="Kohlenhydrate wie Kartoffeln, Pasta, Reis..."
         />
+        <button
+          type="button"
+          class="info-button"
+          @click="$refs.kraftpaket.showModal()"
+        >
+          <span class="visually-hidden">Was bedeutet Kraftpaket?</span>
+
+          <img src="../assets/info.svg" />
+        </button>
         <label for="denkfutter">Denkfutter</label>
         <input
           v-model="recipe.denkfutter"
@@ -49,17 +58,15 @@
         />
         <FilterTags
           :tags="recipe.tags"
-          @update:tags="(newValue) => (recipe.tags = newValue)"
+          @update:tags="onTagsUpdate($event)"
         ></FilterTags>
       </div>
 
       <button class="basic-button" type="submit">Speichern</button>
       <button class="basic-button" type="reset">Reset</button>
     </form>
-    <button class="info-button" @click="openInfo">
-      <img src="../assets/info.svg" />
-    </button>
-    <dialog id="data-modal">
+
+    <dialog ref="kraftpaket">
       <div>
         <strong>Kohlenhydrate</strong> sind echte Kraftpakete! Das machen sie
         ganz schnell, aber auch lanfristig. Zuckerbausteine aus deinem Essen
@@ -79,12 +86,9 @@
         darf es sein, aber mach dir keinen Stress. Eine schnelle Portion Rohkost
         ist immer eine praktische Möglichkeit um hier zu punkten.
       </div>
-      <button @click="closeInfo">close</button>
+      <button @click="$refs.modal.close()">close</button>
     </dialog>
   </div>
-  <ul>
-    <li v-for="recipe in recipes" :key="recipe.id">{{ recipe.title }}</li>
-  </ul>
 </template>
 <style scoped>
 .further-info {
@@ -160,7 +164,6 @@ export default {
 
   methods: {
     async addRecipe() {
-      //prettier ignore
       await fetch("http://localhost:3017/recipes", {
         method: "POST",
         headers: {
@@ -171,12 +174,13 @@ export default {
       this.recipe = { ...emptyRecipe };
     },
     openInfo() {
-      const modal = document.querySelector("#data-modal");
-      return modal.showModal();
+      this.$refs.modal.showModal();
     },
     closeInfo() {
-      const modal = document.querySelector("#data-modal");
-      return modal.close();
+      this.$refs.modal.close();
+    },
+    onTagsUpdate(newValue) {
+      this.recipe.tags = newValue;
     },
   },
 };
