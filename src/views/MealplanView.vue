@@ -51,7 +51,9 @@ export default {
   },
   methods: {
     async showRecipes() {
-      const response = await fetch("http://localhost:3017/recipes");
+      const response = await fetch(
+        "https://23-tz-general-earlybirds.api.cbe.uber.space/recipes"
+      );
       const data = await response.json();
       this.recipes = data;
     },

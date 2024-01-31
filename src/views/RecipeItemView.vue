@@ -31,8 +31,8 @@
 </style>
 
 <script>
-import FilterTags from "@/components/FilterTags.vue";
-const urlBase = "http://localhost:3017/recipes/";
+import FilterTags from "@/components/TagsFilter.vue";
+const urlBase = "https://23-tz-general-earlybirds.api.cbe.uber.space/recipes/";
 export default {
   name: "RecipeItemView",
   components: {

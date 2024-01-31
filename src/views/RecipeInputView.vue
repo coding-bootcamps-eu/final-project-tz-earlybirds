@@ -193,7 +193,7 @@ button {
 }
 </style>
 <script>
-import FilterTags from "../components/FilterTags.vue";
+import FilterTags from "../components/TagsFilter.vue";
 
 const emptyRecipe = {
   title: "",
@@ -220,13 +220,16 @@ export default {
 
   methods: {
     async addRecipe() {
-      await fetch("http://localhost:3017/recipes", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(this.recipe),
-      });
+      await fetch(
+        "https://23-tz-general-earlybirds.api.cbe.uber.space/recipes",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(this.recipe),
+        }
+      );
       this.recipe = { ...emptyRecipe };
     },
     /*openInfo() {

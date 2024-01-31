@@ -95,7 +95,7 @@ li {
 
 <script>
 // @ is an alias to /src
-import FilterTags from "@/components/FilterTags.vue";
+import FilterTags from "@/components/TagsFilter.vue";
 export default {
   name: "RecipeView",
   components: {
@@ -127,13 +127,16 @@ export default {
   },
   methods: {
     async fetchRecipes() {
-      const response = await fetch("http://localhost:3017/recipes");
+      const response = await fetch(
+        "https://23-tz-general-earlybirds.api.cbe.uber.space/recipes"
+      );
       const data = await response.json();
       this.recipes = data;
     },
 
     deleteRecipe(id) {
-      const baseUrl = "http://localhost:3017/recipes/";
+      const baseUrl =
+        "https://23-tz-general-earlybirds.api.cbe.uber.space/recipes/";
 
       fetch(baseUrl + id, {
         method: "DELETE",
