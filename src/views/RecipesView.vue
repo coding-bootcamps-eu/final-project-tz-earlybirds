@@ -96,6 +96,7 @@ li {
 <script>
 // @ is an alias to /src
 import FilterTags from "@/components/TagsFilter.vue";
+import "dotenv/config";
 export default {
   name: "RecipeView",
   components: {
@@ -127,9 +128,7 @@ export default {
   },
   methods: {
     async fetchRecipes() {
-      const response = await fetch(
-        "https://23-tz-general-earlybirds.api.cbe.uber.space/recipes"
-      );
+      const response = await fetch(process.env.API_HOST + "/recipes");
       const data = await response.json();
       this.recipes = data;
     },
